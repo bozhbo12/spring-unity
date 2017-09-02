@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	
+<!-- 整个消息的长度是4个字节是Int型 length表示该字段后的消息长度 -->
+<!-- 协议长度的 length的字节型必须注明 0(big-endian) 1(little-endian),不可缺少-->
+<!-- 协议头中必须存在 协议标识 -->
+<!-- 设置消息头协议字段顺序中,必须有一个字段是Length 如果没有协议字段顺序,length从第0个索引开始 -->
+<!-- 当消息头中的class不存在时,消息将转入<accept-handle>的配置类或者默认类处理-->
+<!-- 当消息不存在消息头时,<filter>将失效,必须配置<accept-handle>-->
+	<protocols>
+	 	<protocol-processors>
+			<processor-mapping>
+				<protocolId>0xFFFF</protocolId>
+				<message-body>BaseResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xFF03</protocolId>
+				<message-body>BaseResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xFF04</protocolId>
+				<message-body>SysTimeResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xFF08</protocolId>
+				<message-body>GameErrorResponse</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xFF10</protocolId>
+				<message-body>GameSuccessResponse</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xFF12</protocolId>
+				<message-body>GmResp</message-body>
+			 </processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA005</protocolId>
+				<message-body>UserLoginReq</message-body>
+			</processor-mapping>	
+			<processor-mapping>
+				<protocolId>0xA006</protocolId>
+				<message-body>UserLoginResp</message-body>
+			</processor-mapping>				
+			<processor-mapping>
+				<protocolId>0xA001</protocolId>
+				<message-body>UserVerifyReq</message-body>
+			</processor-mapping>	
+			<processor-mapping>
+				<protocolId>0xA002</protocolId>
+				<message-body>UserVerifyResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA007</protocolId>
+				<message-body>CreatRoleReq</message-body>
+			</processor-mapping>	
+			<processor-mapping>
+				<protocolId>0xA008</protocolId>
+				<message-body>CreatRoleResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA010</protocolId>
+				<message-body>UserLogoutResp</message-body>
+			</processor-mapping>
+
+			<!-- 用户注销 -->			
+			<processor-mapping>
+				<protocolId>0xA013</protocolId>
+				<message-body>Req</message-body>
+			</processor-mapping>	
+			<processor-mapping>
+				<protocolId>0xA014</protocolId>
+				<message-body>RolePlayResp</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA015</protocolId>
+				<message-body>Req</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA016</protocolId>
+				<message-body>ModulusResp</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA019</protocolId>
+				<message-body>GPSReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA020</protocolId>
+				<message-body>GPSResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA023</protocolId>
+				<message-body>DelFriendReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA024</protocolId>
+				<message-body>DelFriendResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA021</protocolId>
+				<message-body>MyListReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA022</protocolId>
+				<message-body>MyListResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA027</protocolId>
+				<message-body>CheckFriendReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA028</protocolId>
+				<message-body>CheckFriendResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA031</protocolId>
+				<message-body>FindFriendReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA032</protocolId>
+				<message-body>FindFriendResp</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA033</protocolId>
+				<message-body>SendAddFriendReq</message-body>
+			</processor-mapping>
+<!--			<processor-mapping>
+				<protocolId>0xA034</protocolId>
+				<message-body>CheckFriendResp</message-body>
+			</processor-mapping>-->
+			<processor-mapping>
+				<protocolId>0xA035</protocolId>
+				<message-body>AddBlackReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA036</protocolId>
+				<message-body>AddBlackResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA037</protocolId>
+				<message-body>RemoveBlackReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA038</protocolId>
+				<message-body>RemoveBlackResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA039</protocolId>
+				<message-body>FriendActionReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA040</protocolId>
+				<message-body>FriendActionResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA041</protocolId>
+				<message-body>BaseResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA044</protocolId>
+				<message-body>ReceiveFightMsgResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA045</protocolId>
+				<message-body>GetPackageReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA046</protocolId>
+				<message-body>GetPackageResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA047</protocolId>
+				<message-body>OpenPackageReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA048</protocolId>
+				<message-body>OpenPackageResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA049</protocolId>
+				<message-body>GetRaceRankListReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA051</protocolId>
+				<message-body>BaseResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA052</protocolId>
+				<message-body>GetFightListResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA053</protocolId>
+				<message-body>StrongReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA054</protocolId>
+				<message-body>StrongRESP</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA055</protocolId>
+				<message-body>SellReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA056</protocolId>
+				<message-body>SellRESP</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA057</protocolId>
+				<message-body>UpgradeReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA058</protocolId>
+				<message-body>UpgradeResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA071</protocolId>
+				<message-body>AuctionSellReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA072</protocolId>
+				<message-body>AuctionSellResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA073</protocolId>
+				<message-body>AuctionCancelReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA074</protocolId>
+				<message-body>AuctionCancelResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA075</protocolId>
+				<message-body>AuctionBuyReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA076</protocolId>
+				<message-body>AuctionBuyResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA077</protocolId>
+				<message-body>AuctionQueryReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA078</protocolId>
+				<message-body>AuctionQueryResp</message-body>
+			</processor-mapping>				
+			<processor-mapping>
+				<protocolId>0xA081</protocolId>
+				<message-body>DuplicateEnterReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA082</protocolId>
+				<message-body>DuplicateEnterResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA083</protocolId>
+				<message-body>DuplicateStepReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA084</protocolId>
+				<message-body>DuplicateStepCommonResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA086</protocolId>
+				<message-body>DuplicateStepBossResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA088</protocolId>
+				<message-body>DuplicateStepDropResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA090</protocolId>
+				<message-body>GetBagResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA091</protocolId>
+				<message-body>BossFightReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA092</protocolId>
+				<message-body>BossFightResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA093</protocolId>
+				<message-body>Req</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA094</protocolId>
+				<message-body>BossListResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA095</protocolId>
+				<message-body>Req</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA096</protocolId>
+				<message-body>BossCoolDownResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA097</protocolId>
+				<message-body>Req</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA098</protocolId>
+				<message-body>DuplicateBossListResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA099</protocolId>
+				<message-body>DuplicateBuyReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA100</protocolId>
+				<message-body>DuplicateBuyResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA121</protocolId>
+				<message-body>ActionFightValReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA122</protocolId>
+				<message-body>ActionFightValResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA123</protocolId>
+				<message-body>RoleGuideReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA124</protocolId>
+				<message-body>RoleGuideResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA201</protocolId>
+				<message-body>MailListQueryReq</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA202</protocolId>
+				<message-body>MailListQueryResp</message-body>
+			</processor-mapping>
+			 <processor-mapping>
+				<protocolId>0xA761</protocolId>
+				<message-body>ChatReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA762</protocolId>
+				<message-body>ChatResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xB001</protocolId>
+				<message-body>FightReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xB002</protocolId>
+				<message-body>FightResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xB003</protocolId>
+				<message-body>SetCardPositionReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xB004</protocolId>
+				<message-body>SetCardPositionResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA131</protocolId>
+				<message-body>MyListReq</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA132</protocolId>
+				<message-body>MyListResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA133</protocolId>
+				<message-body>DetailReq</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA134</protocolId>
+				<message-body>DetailResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA135</protocolId>
+				<message-body>DelFriendReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA136</protocolId>
+				<message-body>DelFriendResp</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA137</protocolId>
+				<message-body>SendMsgReq</message-body>
+			</processor-mapping>			
+			<processor-mapping>
+				<protocolId>0xA138</protocolId>
+				<message-body>SendMsgResp</message-body>
+			</processor-mapping>
+			
+			
+<!--			<processor-mapping>
+				<protocolId>0xB005</protocolId>
+				<message-body>BaseResp</message-body>
+			</processor-mapping>	
+			<processor-mapping>
+				<protocolId>0xB006</protocolId>
+				<message-body>BossListResp</message-body>
+			</processor-mapping>-->
+			<processor-mapping>
+				<protocolId>0xB007</protocolId>
+				<message-body>FightWorldBossReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xB008</protocolId>
+				<message-body>FightWorldBossResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xB009</protocolId>
+				<message-body>RaceFightReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xB010</protocolId>
+				<message-body>RaceFightResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA061</protocolId>
+				<message-body>BuyCardReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA062</protocolId>
+				<message-body>BuyCardResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA145</protocolId>
+				<message-body>BuyReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA146</protocolId>
+				<message-body>BuyResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA147</protocolId>
+				<message-body>HeadReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA148</protocolId>
+				<message-body>HeadResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA050</protocolId>
+				<message-body>PackageCountResp</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xAA00</protocolId>
+				<message-body>SendGmccMsgReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xAA01</protocolId>
+				<message-body>ReceiveGmccMsg</message-body>
+			</processor-mapping>
+			
+
+			<processor-mapping>
+				<protocolId>0xA952</protocolId>
+				<message-body>RolePointResp</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA953</protocolId>
+				<message-body>RoleConsumePointReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA954</protocolId>
+				<message-body>RoleConsumePointResp</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA150</protocolId>
+				<message-body>RolePropRefreshResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA151</protocolId>
+				<message-body>RoleReloadResp</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA154</protocolId>
+				<message-body>QueryPublishResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xB005</protocolId>
+				<message-body>FriendFightReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xB006</protocolId>
+				<message-body>FriendFightResp</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA963</protocolId>
+				<message-body>ChargeGetOrderReq</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA964</protocolId>
+				<message-body>ChargeGetOrderResp</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA208</protocolId>
+				<message-body>MailListQueryRes</message-body>
+			</processor-mapping>
+			
+			
+			<processor-mapping>
+				<protocolId>0xA034</protocolId>
+				<message-body>SendAddFriendReq</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA157</protocolId>
+				<message-body>InviteCodeReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA158</protocolId>
+				<message-body>InviteCodeResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA159</protocolId>
+				<message-body>InviteCodeReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA160</protocolId>
+				<message-body>InviteCodeResp</message-body>
+			</processor-mapping>
+			
+			<processor-mapping>
+				<protocolId>0xA161</protocolId>
+				<message-body>FragmentExchangeReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA162</protocolId>
+				<message-body>FragmentExchangeResp</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA956</protocolId>
+				<message-body>RoleEnthrallmentResp</message-body>
+			</processor-mapping>
+
+      <!--竞技场排行榜-->
+      
+		  <processor-mapping>
+			<protocolId>0xB102</protocolId>
+			<message-body>RankInfoResp</message-body>
+		  </processor-mapping>
+		  
+		  <processor-mapping>
+			<protocolId>0xB110</protocolId>
+			<message-body>RankRecordResp</message-body>
+		  </processor-mapping>
+	
+		  <processor-mapping>
+			<protocolId>0xB103</protocolId>
+			<message-body>RankFightReq</message-body>
+		  </processor-mapping>
+		  
+		  <processor-mapping>
+			<protocolId>0xB104</protocolId>
+			<message-body>RankFightResp</message-body>
+		  </processor-mapping>
+		  
+		  <processor-mapping>
+			<protocolId>0xB108</protocolId>
+			<message-body>BuyAttackCountResp</message-body>
+		  </processor-mapping>
+		  
+		  <processor-mapping>
+			<protocolId>0xB106</protocolId>
+			<message-body>CooldownResp</message-body>
+		  </processor-mapping>
+		  
+		  <processor-mapping>
+			<protocolId>0xB112</protocolId>
+			<message-body>RankAwardInfoResp</message-body>
+		  </processor-mapping>
+      
+      
+      <processor-mapping>
+        <protocolId>0xB204</protocolId>
+        <message-body>XianfuInfoResp</message-body>
+      </processor-mapping>
+      
+      <processor-mapping>
+        <protocolId>0xB206</protocolId>
+        <message-body>XianfuCompoundResp</message-body>
+      </processor-mapping>
+      
+      <processor-mapping>
+        <protocolId>0xB208</protocolId>
+        <message-body>XianfuBuyResp</message-body>
+      </processor-mapping>
+
+      <processor-mapping>
+        <protocolId>0xB212</protocolId>
+        <message-body>RankStoreLoadResp</message-body>
+      </processor-mapping>
+
+      <processor-mapping>
+        <protocolId>0xB214</protocolId>
+        <message-body>RankStoreLoadResp</message-body>
+      </processor-mapping>
+
+      <processor-mapping>
+        <protocolId>0xB216</protocolId>
+        <message-body>RankStoreExchangeResp</message-body>
+      </processor-mapping>
+			
+			<processor-mapping>
+        <protocolId>0xA965</protocolId>
+        <message-body>CardNoReq</message-body>
+      </processor-mapping>
+			
+			<processor-mapping>
+        <protocolId>0xA966</protocolId>
+        <message-body>CardNoResp</message-body>
+      </processor-mapping>
+		
+		<!--心魔图标显示-->	
+	  <processor-mapping>
+        <protocolId>0xA106</protocolId>
+        <message-body>BossInfoResp</message-body>
+      </processor-mapping>
+			
+		<processor-mapping>
+        <protocolId>0xA968</protocolId>
+        <message-body>ChargeTotalResp</message-body>
+      </processor-mapping>	
+			
+	<processor-mapping>
+        <protocolId>0xB210</protocolId>
+        <message-body>GetXianfuResp</message-body>
+      </processor-mapping>		
+			
+			<processor-mapping>
+        <protocolId>0xA164</protocolId>
+        <message-body>GetActionResp</message-body>
+      </processor-mapping>	
+			
+	<processor-mapping>
+        <protocolId>0xA165</protocolId>
+        <message-body>GetChargeGiftReq</message-body>
+      </processor-mapping>
+		
+	<processor-mapping>
+        <protocolId>0xA166</protocolId>
+        <message-body>GetChargeGiftResp</message-body>
+      </processor-mapping>
+      
+      
+		<processor-mapping>
+        <protocolId>0xA305</protocolId>
+        <message-body>DailyDropReceiveReq</message-body>
+      </processor-mapping>	
+      
+      	<processor-mapping>
+        <protocolId>0xA306</protocolId>
+        <message-body>DailyDropReceiveResp</message-body>
+      </processor-mapping>	
+      
+      
+      <processor-mapping>
+        <protocolId>0xA309</protocolId>
+        <message-body>DailyReceiveReq</message-body>
+      </processor-mapping>	
+      
+      <processor-mapping>
+        <protocolId>0xA310</protocolId>
+        <message-body>DailyLoadResp</message-body>
+      </processor-mapping>	
+
+   <processor-mapping>
+	<protocolId>0xA308</protocolId>
+	<message-body>DailyLoadResp</message-body>
+	</processor-mapping>
+      
+    <processor-mapping>
+        <protocolId>0xA303</protocolId>
+        <message-body>Req</message-body>
+      </processor-mapping>
+      	
+    <processor-mapping>
+        <protocolId>0xA304</protocolId>
+        <message-body>GetWelfareInfoResp</message-body>
+      </processor-mapping>
+      
+    <processor-mapping>
+        <protocolId>0xA301</protocolId>
+        <message-body>GetWelfareGiftReq</message-body>
+      </processor-mapping>
+      
+    <processor-mapping>
+        <protocolId>0xA302</protocolId>
+        <message-body>GetWelfareGiftResp</message-body>
+      </processor-mapping>
+      
+      
+       <processor-mapping>
+        <protocolId>0xA312</protocolId>
+        <message-body>FirstChargeInfoResp</message-body>
+      </processor-mapping>
+      
+      
+      <processor-mapping>
+        <protocolId>0xA401</protocolId>
+        <message-body>FloorReq</message-body>
+      </processor-mapping>
+      
+      <processor-mapping>
+        <protocolId>0xA402</protocolId>
+        <message-body>FloorResp</message-body>
+      </processor-mapping>
+      
+       <processor-mapping>
+        <protocolId>0xA404</protocolId>
+        <message-body>FloorRankResp</message-body>
+      </processor-mapping>
+
+      <processor-mapping>
+        <protocolId>0xA452</protocolId>
+        <message-body>GetVipAwardsResp</message-body>
+      </processor-mapping>
+
+      <processor-mapping>
+        <protocolId>0xA454</protocolId>
+        <message-body>DoubleGainResp</message-body>
+      </processor-mapping>
+
+      <processor-mapping>
+        <protocolId>0xA460</protocolId>
+        <message-body>BuyVipResp</message-body>
+      </processor-mapping>
+      
+      
+      <processor-mapping>
+        <protocolId>0xB113</protocolId>
+        <message-body>RankCardInfoReq</message-body>
+      </processor-mapping>
+      
+       <processor-mapping>
+        <protocolId>0xB114</protocolId>
+        <message-body>RankCardInfoResp</message-body>
+      </processor-mapping>
+      
+      <processor-mapping>
+        <protocolId>0xA212</protocolId>
+        <message-body>AppStoreRechargeResp</message-body>
+      </processor-mapping>
+
+      <processor-mapping>
+        <protocolId>0xA456</protocolId>
+        <message-body>QuickFloorResp</message-body>
+      </processor-mapping>
+
+      <processor-mapping>
+        <protocolId>0xA458</protocolId>
+        <message-body>SkyRoadReStartResp</message-body>
+      </processor-mapping>
+      
+    </protocol-processors>
+  </protocols>
+</config>
