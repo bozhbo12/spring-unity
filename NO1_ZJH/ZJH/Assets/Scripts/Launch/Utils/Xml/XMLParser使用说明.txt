@@ -1,0 +1,62 @@
+﻿该XML解析库的原理是将XML字符串解析转为hash/array结构存储。使用起来很简单，方法有二：
+
+加入XML内容如下：
+
+<example>
+  
+<value type="String">Foobar</value>
+  
+<value type="Int">3</value>
+
+</example>
+
+
+通过
+var parse = new XMLParser();
+var node = parse.Parse(XMLStr);
+该库将上述XML内容解析为如下结构：
+
+node = {"_text":"", "example":[{ "_text":"", "value":[{"_text":"Foobar", "@type":"String"}, {"_text":"3", "@type":"Int"}] }]}
+
+
+因此我们可以通过如下方式得到example下第二个value节点的type属性的值：
+string val = node["example"][0]["value"][1]["@type"];
+
+或
+使用另外一种以路径标识的更直观的方式获得该值：
+string val = node.GetValue("example>0>value>1@type");
+
+
+
+其他常用的方法有：
+获得第二个value节点:
+XMLNode node = node.GetNode("example>0>value>1");
+
+获得所有value节点：
+XMLNodeList nodelist = node.GetNodeList("example>0>value");
+
+获得第一个value节点的innerText值：
+String innerText = node.GetValue("example>0>value>0>_text");
+
+
+==============================================
+具体使用详见示例项目。
+
+Author: Chengang
+2014/10/22
+
+<Object Config=\"Equip100110\">
+    <Properties ModifyAddPackage=\"51100099#51900099#52400092#52900096\" BattleAbility=\"4560\" ColorLevel=\"4\" Amount=\"1\" />
+    <Records>
+	<Record ID=\"OrangeLV90RandPropRec\">
+		<Row PR>
+			<Col>3011004</Col>
+		</Row>
+		<Row>
+			<Col>3011008</Col>
+		</Row>
+	</Record>
+    </Records>
+</Object>
+
+rootnode.GetValue("Object>0>Records>0>Record>0>Row>0>Col>0>_text")

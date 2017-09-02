@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 15a221d5194c76142a50b6e2475c2e4c
+labels:
+- Spawn
+- Manager
+- Preload
+- Pool
+- Instance
+- Performance
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
