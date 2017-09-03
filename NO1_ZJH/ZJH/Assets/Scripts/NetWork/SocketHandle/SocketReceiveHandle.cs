@@ -63,7 +63,7 @@ public class SocketReceiveHandle
 //					Client.NetMessageDispather.Dispatch(0x9999,this,messageBody);
 				}
 				Debug.LogError("=----=-=-=-=-=-=-=-=-=-=-==-=-=-==-=-=-=-");
-//				Client.NetMessageDispather.Dispatch(protocolId,this,messageBody);
+				Client.NetMessageDispather.Dispatch(protocolId,this,messageBody);
 				
             }
             else

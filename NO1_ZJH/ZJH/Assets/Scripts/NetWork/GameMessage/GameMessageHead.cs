@@ -9,11 +9,9 @@ public class GameMessageHead : MessageHead
     private int UserID1; // 游戏通讯服务器ID
     private int UserID2; // 服务器端使用序列号
     private int UserID3; // 战斗运算服务器ID
-    private int UserID4;
-    private int UserID5;
-    private int UserID6;
-    private int UserID7;
     private int MsgType;
+	private string userState; // 
+
 
     public override long getProtocolId()
     {
@@ -84,38 +82,14 @@ public class GameMessageHead : MessageHead
     {
         Version = version;
     }
-    public int getUserID4()
-    {
-        return UserID4;
-    }
-    public void setUserID4(int userID4)
-    {
-        UserID4 = userID4;
-    }
-    public int getUserID5()
-    {
-        return UserID5;
-    }
-    public void setUserID5(int userID5)
-    {
-        UserID5 = userID5;
-    }
-    public int getUserID6()
-    {
-        return UserID6;
-    }
-    public void setUserID6(int userID6)
-    {
-        UserID6 = userID6;
-    }
-    public int getUserID7()
-    {
-        return UserID7;
-    }
-    public void setUserID7(int userID7)
-    {
-        UserID7 = userID7;
-    }
+	public string getUserState()
+	{
+		return userState;
+	}
+	public void setUserState(string userState)
+	{
+		userState = userState;
+	}
 
     public override void setSequnce(ProtocolSequence ps)
     {
@@ -124,12 +98,7 @@ public class GameMessageHead : MessageHead
         ps.add("UserID1");
         ps.add("UserID2");
         ps.add("UserID3");
-        ps.add("UserID4");
-        ps.add("UserID5");
-        ps.add("UserID6");
-        ps.add("UserID7");
         ps.add("MsgType");
+		ps.add("userState");
     }
-
-
 }

@@ -3,9 +3,18 @@ using System;
 
 public static class ServerMessage
 {
-	
-	
 	#region <>通用模块<>
+	/// <summary>
+	/// 通用接口类型;
+	/// </summary>
+	public enum COMMONTYPE
+	{
+
+	}
+	//通用接口;
+	public const int SERVER_COMMON_REQ = 0xA105;
+	public const int SERVER_COMMON_RESP = 0xA106;
+
 	/// <summary>
 	/// 服务端心跳维护(请求)
 	/// </summary>
@@ -55,9 +64,11 @@ public static class ServerMessage
 	/// <summary>
 	/// 用户登录(返回0xA008创建角色)
 	/// </summary>
-	public const int SERVER_LOGIN_REQ = 0xA005;
-	public const int SERVER_LOGIN_RESP = 0xA006;
-	
+	public const int SERVER_LOGIN_REQ = 0xA003;
+	public const int SERVER_LOGIN_RESP = 0xA004;
+
+
+
 	/// <summary>
 	/// 登出消息号;
 	/// </summary>

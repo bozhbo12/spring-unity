@@ -192,7 +192,7 @@ public class UnitySocket
 			if(mSocket!=null&&mSocket.Connected)
 			{
 				Message message = new Message();
-				GameMessageHead messageHead  = BaseMessageHandle.getMessageHead(1,1,(int)ServerMessage.SERVER_ACTIVE_REQ,1);
+				GameMessageHead messageHead  = BaseMessageHandle.getMessageHead(1,1,(int)ServerMessage.SERVER_ACTIVE_REQ,1,string.Empty);
 				message.setHead(messageHead);
 				sendData(message);
                 Debug.Log("====##CheckServerThread===");
@@ -318,7 +318,6 @@ public class UnitySocket
 			Debug.LogError("Network connected.");
             asyncState.EndConnect(ia);
 //			Data.Instance.FristLongin = GlobalConfig.GAME_SERVER_PORT[Data.Instance.PortIndex]; 
-			Debug.Log("===================ServerMessageServerMessageServerMessageServerMessage=============1===");
 //			Client.NetMessageDispather.Dispatch(ServerMessage.CLIENT_SOCKET_SUCCEED,null,null);
         }
         catch (Exception exception)

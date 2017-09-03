@@ -27,12 +27,21 @@ public class NetMessageConfig
     /// </summary>
     public bool loadConfig()
     {
-		TextAsset textAsset =null;// CardResourcesload.instance.LoadXml(GlobalConfig.FUNCTION_CONFIG_PATH) as TextAsset;
-        if (textAsset != null)
-        {
-            return ReadConfig1(textAsset.text); 
-        }
-		return false;
+		TextAsset textAsset = Resources.Load(GlobalConfig.FUNCTION_CONFIG_PATH) as TextAsset;
+
+		bool isRead = false;
+//		ResourceManager.LoadAsset(GlobalConfig.FUNCTION_CONFIG_PATH,(UnityEngine.Object oAsset,
+//			string strFileName2,VarStore varStore)=>{
+//		
+//			TextAsset textAsset = oAsset as TextAsset;
+//			if (textAsset != null)
+//			{
+				isRead = ReadConfig1(textAsset.text); 
+//			}
+//		
+//		});
+
+		return isRead;
     }
 
     private bool ReadConfig1(String path)
@@ -89,6 +98,7 @@ public class NetMessageConfig
                 }
             }
         }
+		Debug.LogError("protocolId is config suss!");
 		return true;
     }
 

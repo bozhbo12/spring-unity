@@ -42,7 +42,7 @@ public static class GlobalConfig
 	/// </summary>
 	public static string GAME_SERVER_NAME = "GameServer";
 
-	public static string GAME_SERVER_IP = "172.19.61.153"; 
+	public static string GAME_SERVER_IP = "192.168.0.101"; 
 
 	public static int[] GAME_SERVER_PORT = null;
      

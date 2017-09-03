@@ -22,7 +22,7 @@ public class BaseMessageHandle
 			case "BYTE":
 				  if(flag)
 				  {
-				 	stream.WriteByte(0);
+				 	//stream.WriteByte(0);
 				  }
 				 stream.WriteByte((byte)obj);
 				 break;
@@ -31,7 +31,7 @@ public class BaseMessageHandle
 			
 				  if(flag)
 				  {
-				 	stream.WriteByte(1);
+				 	//stream.WriteByte(1);
 				  }
 				 stream.Write(getSendShort((short)obj),0,2);
 				 break;
@@ -40,7 +40,7 @@ public class BaseMessageHandle
 			
 				  if(flag)
 				  {
-				 	stream.WriteByte(2);
+				 	//stream.WriteByte(2);
 				  }
 				 stream.Write(getSendInt((int)obj),0,4);
 				 break;
@@ -48,7 +48,7 @@ public class BaseMessageHandle
 			
 				  if(flag)
 				  {
-				 	stream.WriteByte(9);
+				 	//stream.WriteByte(9);
 				  }
 				 stream.Write(getSendLong((long)obj),0,8);			
 				 break;
@@ -56,7 +56,7 @@ public class BaseMessageHandle
 			
 				  if(flag)
 				  {
-				 	stream.WriteByte(3);
+				 	//stream.WriteByte(3);
 				  }
 				 stream.Write(getSendFloat((float)obj),0,4);
 				 break;
@@ -64,28 +64,28 @@ public class BaseMessageHandle
 			
 				  if(flag)
 				  {
-				 	stream.WriteByte(3);
+				 	//stream.WriteByte(3);
 				  }
 				 stream.Write(getSendFloat((float)obj),0,4);
 				 break;
 			case "DOUBLE":
 				  if(flag)
 				  {
-				 	stream.WriteByte(7);
+				 	//stream.WriteByte(7);
 				  }
 				 stream.Write(getSendDouble((double)obj),0,8);
 				 break;
 			case "LONG":
 				  if(flag)
 				  {
-				 	stream.WriteByte(9);
+				 	//stream.WriteByte(9);
 				  }
 				 stream.Write(getSendLong((long)obj),0,8);			
 				 break;
 			case "STRING":
 				  if(flag)
 				  {
-				 	stream.WriteByte(4);
+				 	//stream.WriteByte(4);
 				  }
 				 byte [] g = getSendString((string)obj);	
 				 stream.Write( g,0,g.Length);			
@@ -189,7 +189,7 @@ public class BaseMessageHandle
 			case "BYTE":
 				  if(flag)
 				  {
-				 	stream.ReadByte();
+				 	//stream.ReadByte();
 				  }
 
 				  return (byte)stream.ReadByte();
@@ -198,7 +198,7 @@ public class BaseMessageHandle
 			
 				  if(flag)
 				  {
-				  	stream.ReadByte();
+				  	//stream.ReadByte();
 				  }
 				  b = new byte[2];
 				  stream.Read(b,0,2);
@@ -207,7 +207,7 @@ public class BaseMessageHandle
 			
 				  if(flag)
 				  {
-				  	stream.ReadByte();
+				  	//stream.ReadByte();
 				  }
 				 b = new byte[4];
 				 stream.Read(b,0,4);
@@ -216,7 +216,7 @@ public class BaseMessageHandle
 			
 				  if(flag)
 				  {
-				  	stream.ReadByte();
+				  	//stream.ReadByte();
 				  }
 				 b = new byte[8];
 				 stream.Read(b,0,8);
@@ -225,7 +225,7 @@ public class BaseMessageHandle
 			
 				  if(flag)
 				  {
-				 	 	stream.ReadByte();
+				 	 	//stream.ReadByte();
 				  }
 				  b = new byte[4];
 				  stream.Read(b,0,4);
@@ -234,7 +234,7 @@ public class BaseMessageHandle
 			
 				  if(flag)
 				  {
-				 	 	stream.ReadByte();
+				 	 	//stream.ReadByte();
 				  }
 				  b = new byte[4];
 				  stream.Read(b,0,4);
@@ -242,7 +242,7 @@ public class BaseMessageHandle
 			case "DOUBLE":
 				  if(flag)
 				  {
-				  	stream.ReadByte();
+				  	//stream.ReadByte();
 				  }
 				  b = new byte[8];
 				  stream.Read(b,0,8);
@@ -251,7 +251,7 @@ public class BaseMessageHandle
 			case "LONG":
 				  if(flag)
 				  {
-				 	 	stream.ReadByte();
+				 	 	//stream.ReadByte();
 				  }
 				  b = new byte[8];
 				  stream.Read(b,0,8);
@@ -261,7 +261,7 @@ public class BaseMessageHandle
 			case "STRING":
 				  if(flag)
 				  {
-				 	 stream.ReadByte();
+				 	// stream.ReadByte();
 				  }
 				  byte [] c = new byte[2];
 				  stream.Read(c,0,2);
@@ -346,17 +346,17 @@ public class BaseMessageHandle
 	}
 
 
-    public static GameMessageHead getMessageHead(int roleId, int gateServerId, int msgType, int sceneServerId)
+	public static GameMessageHead getMessageHead(int roleId, int gateServerId, int msgType, int sceneServerId , string userState)
     {
         int sceneId = sceneServerId;
 //        if (SceneInfoMap.RoleInfo.SceneId != 0)
 //        {
 //            sceneId = SceneInfoMap.RoleInfo.SceneId;
 //        }
-        return getMessageHead(roleId, gateServerId, 0, sceneId, 0, 0, 0, 0, msgType);
+		return getMessageHead(roleId, gateServerId, 0, sceneId, msgType,userState);
     }
 	
-	public static GameMessageHead getMessageHead(int UserID0,int UserID1,int UserID2,int UserID3,int UserID4,int UserID5,int UserID6,int UserID7,int msgType)
+	public static GameMessageHead getMessageHead(int UserID0,int UserID1,int UserID2,int UserID3,int msgType,string userState)
 	{
  
 		GameMessageHead messageHead = new GameMessageHead ();
@@ -365,12 +365,8 @@ public class BaseMessageHandle
 		messageHead.setUserID1(UserID1);
 		messageHead.setUserID2(UserID2);
 		messageHead.setUserID3(UserID3); //sceneServerId  ///<>战斗ID<><
-		messageHead.setUserID4(UserID4);
-		messageHead.setUserID5(UserID5);
-		messageHead.setUserID6(UserID6);
-		messageHead.setUserID7(UserID7);
 		messageHead.setMsgType(msgType);
-		
+		messageHead.setUserState(userState);
 		return messageHead;
 	}
 	
