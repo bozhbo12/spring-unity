@@ -34,11 +34,11 @@
 				<message-body>GmResp</message-body>
 			 </processor-mapping>			
 			<processor-mapping>
-				<protocolId>0xA005</protocolId>
+				<protocolId>0xA003</protocolId>
 				<message-body>UserLoginReq</message-body>
 			</processor-mapping>	
 			<processor-mapping>
-				<protocolId>0xA006</protocolId>
+				<protocolId>0xA004</protocolId>
 				<message-body>UserLoginResp</message-body>
 			</processor-mapping>				
 			<processor-mapping>
