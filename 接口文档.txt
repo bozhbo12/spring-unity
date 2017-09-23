@@ -18,5 +18,82 @@ public static String KEY_ROOM_GOLD = "roomGold";
 public static String KEY_ROOM_UNIT_GOLD = "roomUnitGold";
 public static String KEY_ROOM_ROUND = "roomRound";
 
-����ΪJson���г��ֵ�key
+角色基础
+
+
+1. 登录
+
+请求消息:
+MsgType: 0xA003
+
+字段名	数据类型	描述
+IP	Integer	角色IP 
+account	String	玩家登陆帐号 
+md5Pass	String	玩家登陆密码 
+validate	String	角色验证串 
+clientType	Integer	客户端类型 1:android 2:ios 
+mac	String	客户端mac地址 
+packageName	String	客户端包名 
+
+应答消息:
+MsgType: 0xA004
+
+字段名	数据类型	描述
+result	Integer	1-成功 2-成功（本地没有用户，需创建）3-成功(新创建的用的，需要引导) 
+roleId	Integer	角色Id 
+account	String	玩家登陆帐号 
+roleName	String	角色名称 
+gateServerId	Integer	gate服务器Id 
+
+
+基础信息
+
+
+1. 一般请求
+
+请求消息:
+MsgType: 0xA105
+
+字段名	数据类型	描述
+optionType	Integer	普通请求二级消息 1-(快速开始) 2-(离开房间) 
+optionStr	String	普通请求附带参数 
+
+房间
+
+
+1. 房间操作
+
+请求消息:
+MsgType: 0xA207
+
+字段名	数据类型	描述
+optionType	Integer	普通请求二级消息 1-准备 2-弃牌 3-跟注 4-加注 5-看牌 6-比牌 
+optionStr	String	普通请求附带参数 3-跟注（跟注金钱） 6-比牌（比牌目标） 
+
+
+MsgType: 0xA208
+
+字段名	数据类型	描述
+room	Integer	不存在消息体，消息头的String字段封装了所有消息;1-房间通知准备 2-房间通知发牌 3-房间通知操作 4-房间通知显示牌 5-房间通知回合变化 9-房间通知结束 10-进入房间初始化 
+player	Integer	不存在消息体，消息头的String字段封装了所有消息;13-玩家准备 14-玩家比牌 15-玩家看牌 16-玩家加注 17-玩家跟注 18-玩家弃牌 19-玩家胜利 
+
+详细介绍：
+10-进入房间初始化：
+{"roomRound":2,"roomRole":[{"roleGold":100,"roleHead":"xxmm0","rolePlayState":"PLAYING","roleId":1,"roleVip":9,"roleName":"role01","roleCardState":"OPEN","roleOnline":1},{"roleGold":200,"roleHead":"xxmm1","rolePlayState":"PLAYING","roleId":2,"roleVip":9,"roleName":"role11","roleCardState":"OPEN","roleOnline":1}],
+"roomUnitGold":100,"roomId":1,"roomGold":1000}
+
+9-房间通知结束：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_GOLD
+5-房间通知回合变化：KEY_SUB_MSG，KEY_ROOM_ROUND
+4-房间通知显示牌：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_CARD
+3-房间通知操作：KEY_SUB_MSG，KEY_ROLE
+2-房间通知发牌：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_CARD
+1-房间通知准备：KEY_SUB_MSG
+
+19-玩家胜利：
+18-玩家弃牌：KEY_SUB_MSG，KEY_ROLE
+17-玩家跟注：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD
+16-玩家加注：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD
+15-玩家看牌：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_CARD
+14-玩家比牌：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD，KEY_TARGET_ROLE，KEY_LOST_ROLE，KEY_WIN_ROLE
+13-玩家准备:KEY_SUB_MSG，KEY_ROLE
 
