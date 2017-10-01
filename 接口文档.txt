@@ -1,3 +1,4 @@
+public static String KEY_SUB_MSG = "subMsg";
 public static String KEY_ROLE = "roleId";
 public static String KEY_ROLE_HEAD = "roleHead";
 public static String KEY_ROLE_VIP = "roleVip";
@@ -73,10 +74,8 @@ optionStr	String	普通请求附带参数 3-跟注（跟注金钱） 6-比牌（
 MsgType: 0xA208
 
 字段名	数据类型	描述
-optionType	Integer	不存在消息体，消息头的String字段封装了所有消息;
-1-房间通知准备 2-房间通知发牌 3-房间通知操作 4-房间通知显示牌 5-房间通知回合变化 9-房间通知结束 10-进入房间初始化 
-12-玩家加入 13-玩家准备 14-玩家比牌 15-玩家看牌 16-玩家加注 17-玩家跟注 18-玩家弃牌 19-玩家胜利 
-optionStr	String	不存在消息体，消息头的String字段封装了所有消息;
+room	Integer	不存在消息体，消息头的String字段封装了所有消息;1-房间通知准备 2-房间通知发牌 3-房间通知操作 4-房间通知显示牌 5-房间通知回合变化 9-房间通知结束 10-进入房间初始化 
+player	Integer	不存在消息体，消息头的String字段封装了所有消息;13-玩家准备 14-玩家比牌 15-玩家看牌 16-玩家加注 17-玩家跟注 18-玩家弃牌 19-玩家胜利 
 
 详细介绍：
 10-进入房间初始化：
@@ -91,11 +90,10 @@ optionStr	String	不存在消息体，消息头的String字段封装了所有消
 1-房间通知准备：KEY_SUB_MSG
 
 19-玩家胜利：
-18-玩家弃牌：KEY_ROLE
-17-玩家跟注：KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD
-16-玩家加注：KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD
-15-玩家看牌：KEY_ROLE，KEY_ROLE_CARD
-14-玩家比牌：KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD，KEY_TARGET_ROLE，KEY_LOST_ROLE，KEY_WIN_ROLE
-13-玩家准备:KEY_ROLE
-12-玩家加入:KEY_ROLE,KEY_ROLE_GOLD,KEY_ROLE_NAME,KEY_ROLE_CARD_STATE,KEY_ROLE_PLAY_STATE,KEY_ROLE_VIP,KEY_ROLE_HEAD,KEY_ROLE_ONLINE
+18-玩家弃牌：KEY_SUB_MSG，KEY_ROLE
+17-玩家跟注：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD
+16-玩家加注：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD
+15-玩家看牌：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_CARD
+14-玩家比牌：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD，KEY_TARGET_ROLE，KEY_LOST_ROLE，KEY_WIN_ROLE
+13-玩家准备:KEY_SUB_MSG，KEY_ROLE
 
