@@ -79,21 +79,22 @@ player	Integer	不存在消息体，消息头的String字段封装了所有消�
 
 详细介绍：
 10-进入房间初始化：
-{"roomRound":2,"roomRole":[{"roleGold":100,"roleHead":"xxmm0","rolePlayState":"PLAYING","roleId":1,"roleVip":9,"roleName":"role01","roleCardState":"OPEN","roleOnline":1},{"roleGold":200,"roleHead":"xxmm1","rolePlayState":"PLAYING","roleId":2,"roleVip":9,"roleName":"role11","roleCardState":"OPEN","roleOnline":1}],
+{"roomId":1,"roomRound":2,"roomRole":[{"roleGold":100,"roleHead":"xxmm0","rolePlayState":"PLAYING","roleId":1,"roleVip":9,"roleName":"role01","roleCardState":"OPEN","roleOnline":1},{"roleGold":200,"roleHead":"xxmm1","rolePlayState":"PLAYING","roleId":2,"roleVip":9,"roleName":"role11","roleCardState":"OPEN","roleOnline":1}],
 "roomUnitGold":100,"roomId":1,"roomGold":1000}
 
-9-房间通知结束：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_GOLD
-5-房间通知回合变化：KEY_SUB_MSG，KEY_ROOM_ROUND
-4-房间通知显示牌：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_CARD
-3-房间通知操作：KEY_SUB_MSG，KEY_ROLE
-2-房间通知发牌：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_CARD
-1-房间通知准备：KEY_SUB_MSG
+9-房间通知结束：KEY_ROOM_ID，KEY_ROLE，KEY_ROLE_GOLD
+5-房间通知回合变化：KEY_ROOM_ID，KEY_ROOM_ROUND
+4-房间通知显示牌：KEY_ROOM_ID，KEY_ROLE，KEY_ROLE_CARD
+3-房间通知操作：KEY_ROOM_ID，KEY_ROLE
+2-房间通知发牌：KEY_ROOM_ID，KEY_ROLE，KEY_ROLE_CARD
+1-房间通知准备：KEY_ROOM_ID
 
 19-玩家胜利：
-18-玩家弃牌：KEY_SUB_MSG，KEY_ROLE
-17-玩家跟注：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD
-16-玩家加注：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD
-15-玩家看牌：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_CARD
-14-玩家比牌：KEY_SUB_MSG，KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD，KEY_TARGET_ROLE，KEY_LOST_ROLE，KEY_WIN_ROLE
-13-玩家准备:KEY_SUB_MSG，KEY_ROLE
-
+18-玩家弃牌：KEY_ROOM_ID,KEY_ROLE
+17-玩家跟注：KEY_ROOM_ID,KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD
+16-玩家加注：KEY_ROOM_ID,KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD
+15-玩家看牌：KEY_ROOM_ID,KEY_ROLE，KEY_ROLE_CARD
+14-玩家比牌：KEY_ROOM_ID,KEY_ROLE，KEY_ROLE_REDUCE_GOLD，KEY_ROLE_GOLD，KEY_ROOM_GOLD，KEY_TARGET_ROLE，KEY_LOST_ROLE，KEY_WIN_ROLE
+13-玩家准备:KEY_ROOM_ID,KEY_ROLE
+12-玩家加入:KEY_ROOM_ID,KEY_ROLE,KEY_ROLE_GOLD,KEY_ROLE_NAME,KEY_ROLE_CARD_STATE,
+KEY_ROLE_PLAY_STATE,KEY_ROLE_VIP,KEY_ROLE_HEAD,KEY_ROLE_ONLINE
